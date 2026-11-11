@@ -25,9 +25,9 @@ jobs:
           cache: pip
       - name: Install Sellbird runtime and development dependencies
         run: |
-          python -m pip install --upgrade pip
+          python -m pip install --upgrade pip "setuptools>=84.1.0"
           python -m pip install -e ".[dev]"
-          python -m pip install "pip-audit==2.10.1"
+          python -m pip install --upgrade "pytest>=9.0.3,<10" "pip-audit==2.10.1"
       - name: Audit installed environment
         run: pip-audit --local --format=json --output pip-audit.json
       - name: Upload audit report
